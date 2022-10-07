@@ -13,6 +13,8 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
+    public int time=0;
+    public int speed;
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -28,8 +30,16 @@ public class MyWorld extends World
     {
         Hero hero = new Hero();
         addObject(hero,10,200);
-        Hero hero1 = new Hero();
-        addObject(hero1,2,300);
-
+    }
+    public void act(){
+        time++;
+        speed=time/3600;
+        generateEnemy(speed);
+    }
+    public void generateEnemy(int speed){
+        if(Greenfoot.getRandomNumber(1000)<5){
+            Enemy enemy = new Enemy(speed +3);
+            addObject(enemy,getWidth(),Greenfoot.getRandomNumber(getHeight()-100)+40);
+        }
     }
 }

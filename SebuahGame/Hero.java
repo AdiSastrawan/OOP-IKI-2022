@@ -14,10 +14,21 @@ public class Hero extends Actor
      */
     public void act()
     {
-        move(7);
-        if(isAtEdge()){
-            setLocation(0,getY());
+        int speed=7;
+        heroMovement(speed);
+    }
+    public void heroMovement(int speed){
+        if(Greenfoot.isKeyDown("w")||Greenfoot.isKeyDown("up")){
+            setLocation(getX(),getY()-speed);
+        }
+        if(Greenfoot.isKeyDown("s")||Greenfoot.isKeyDown("down")){
+            setLocation(getX(),getY()+speed);
+        }
+        if(Greenfoot.isKeyDown("a")||Greenfoot.isKeyDown("left")){
+            setLocation(getX()-speed,getY());
+        }
+        if(Greenfoot.isKeyDown("d")||Greenfoot.isKeyDown("right")){
+            setLocation(getX()+speed,getY());
         }
     }
-
 }
