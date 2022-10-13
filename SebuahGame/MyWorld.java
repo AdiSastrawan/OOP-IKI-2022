@@ -14,6 +14,7 @@ public class MyWorld extends World
      * 
      */
     public int time=0;
+    public int currTime =0;
     public int speed;
     public MyWorld()
     {    
@@ -28,8 +29,10 @@ public class MyWorld extends World
      */
     private void prepare()
     {
-        Hero hero = new Hero();
-        addObject(hero,10,200);
+        int setPosY=200;
+        int setPosX=10;
+        Hero hero = new Hero(setPosY,setPosX);
+        addObject(hero,setPosX,setPosY);
     }
     public void act(){
         time++;
@@ -37,9 +40,12 @@ public class MyWorld extends World
         generateEnemy(speed);
     }
     public void generateEnemy(int speed){
-        if(Greenfoot.getRandomNumber(1000)<5){
+        if(currTime>180){
             Enemy enemy = new Enemy(speed +3);
             addObject(enemy,getWidth(),Greenfoot.getRandomNumber(getHeight()-100)+40);
+            currTime =0;
+        }else{
+            currTime++;
         }
     }
 }

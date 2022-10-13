@@ -21,9 +21,7 @@ public class Enemy extends Actor
     public void act()
     {
         enemyMovement(speed);
-        if(isTouching(Hero.class)){
-            getWorld().removeObject(getOneIntersectingObject(Hero.class));
-        }
+
         if(isAtEdge()){
             getWorld().removeObject(this);
             
