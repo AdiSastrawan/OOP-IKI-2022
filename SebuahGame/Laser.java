@@ -22,6 +22,7 @@ public class Laser extends Actor
     }
     public void laserMovement(int speed){
         if(isTouching(Enemy.class)){
+            getWorld().addObject(new explode(),getX(),getY());
             removeTouching(Enemy.class);
             getWorld().removeObject(this);
         }
